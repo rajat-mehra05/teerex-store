@@ -5,15 +5,38 @@ import ProductCard from "./productCard/ProductCard";
 const ProductsList = () => {
   const {
     state: { products },
-    productState: { searchQuery },
+    productState: {
+      filterByColor,
+      filterByGender,
+      filterByPrice,
+      filterByType,
+    },
   } = CartState();
 
   const filterProducts = () => {
     let filteredItems = products;
 
-    if (searchQuery) {
+    if (filterByColor.length) {
       filteredItems = filteredItems.filter((item) =>
-        item.name.toLowerCase().includes(searchQuery)
+        filterByColor.includes(item.color)
+      );
+    }
+
+    if (filterByGender.length) {
+      filteredItems = filteredItems.filter((item) =>
+        filterByGender.includes(item.gender)
+      );
+    }
+
+    if (filterByPrice.length) {
+      filteredItems = filteredItems.filter((item) =>
+        filterByPrice.includes(item.price)
+      );
+    }
+
+    if (filterByType.length) {
+      filteredItems = filteredItems.filter((item) =>
+        filterByType.includes(item.type)
       );
     }
 

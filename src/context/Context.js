@@ -27,6 +27,10 @@ const Context = ({ children }) => {
   });
 
   const [productState, productDispatch] = useReducer(productReducer, {
+    filterByColor: [],
+    filterByGender: [],
+    filterByPrice: [],
+    filterByType: [],
     searchQuery: "",
   });
 
