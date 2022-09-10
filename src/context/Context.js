@@ -5,18 +5,18 @@ import React, {
   useReducer,
   useState,
 } from "react";
-import { cartReducer } from "../components/reducers/cartReducer";
 import { API_URL } from "../constants/constants";
+import { cartReducer } from "../reducers/cartReducer";
 
 const CartContext = createContext();
 
 const Context = ({ children }) => {
-  const [products, setProducts] = useState([]);
+  const [items, setItems] = useState([]);
 
   const getProductsData = async () => {
     await fetch(`${API_URL}`)
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => setItems(data));
   };
 
   useEffect(() => {
@@ -24,11 +24,9 @@ const Context = ({ children }) => {
   }, []);
 
   const [state, dispatch] = useReducer(cartReducer, {
-    products: products,
+    products: items,
     cart: [],
   });
-
-  console.log(state.products);
 
   return (
     <CartContext.Provider value={{ state, dispatch }}>

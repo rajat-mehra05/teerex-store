@@ -1,9 +1,10 @@
 import React from "react";
+import { CartState } from "../../context/Context";
 
 const ProductsList = () => {
-  // const { state } = CartState();
+  const { state } = CartState();
 
-  // console.log(state);
+  console.log(state.products);
 
   return (
     <div className="flex flex-1 overflow-y-auto">
