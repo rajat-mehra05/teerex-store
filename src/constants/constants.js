@@ -5,5 +5,5 @@ export const filterLabels = {
   color: ["Red", "Blue", "Black", "Pink", "Green"],
   gender: ["Men", "Women"],
   price: ["0-₹250", "₹251-450", "₹500"],
-  type: ["Polo", "Hoddie", "Basic"],
+  type: ["Polo", "Hoodie", "Basic"],
 };
