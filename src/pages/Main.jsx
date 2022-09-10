@@ -7,7 +7,7 @@ const Main = () => {
   return (
     <div>
       <SearchBar />
-      <div className="flex flex-1 gap-8 overflow-hidden h-screen">
+      <div className="flex flex-1 gap-8">
         <FilterBar />
         <ProductsList />
       </div>

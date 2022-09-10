@@ -1,22 +1,20 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import React, { createContext, useContext, useEffect, useReducer } from "react";
 import { API_URL } from "../constants/constants";
 import { cartReducer } from "../reducers/cartReducer";
+import { productReducer } from "../reducers/productReducer";
 
 const CartContext = createContext();
 
 const Context = ({ children }) => {
-  const [items, setItems] = useState([]);
-
   const getProductsData = async () => {
     await fetch(`${API_URL}`)
       .then((res) => res.json())
-      .then((data) => setItems(data));
+      .then((data) => {
+        dispatch({
+          type: "FETCH_DATA",
+          payload: data,
+        });
+      });
   };
 
   useEffect(() => {
@@ -24,12 +22,18 @@ const Context = ({ children }) => {
   }, []);
 
   const [state, dispatch] = useReducer(cartReducer, {
-    products: items,
+    products: [],
     cart: [],
   });
 
+  const [productState, productDispatch] = useReducer(productReducer, {
+    searchQuery: "",
+  });
+
   return (
-    <CartContext.Provider value={{ state, dispatch }}>
+    <CartContext.Provider
+      value={{ state, dispatch, productState, productDispatch }}
+    >
       {children}
     </CartContext.Provider>
   );

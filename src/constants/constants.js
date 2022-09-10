@@ -12,7 +12,7 @@ export const filterLabels = [
   },
   {
     type: "price",
-    value: ["Rs0 - Rs 250", "Rs251 - Rs450", "Rs450"],
+    value: ["₹0 - ₹250", "₹251 - ₹450", "₹450"],
   },
   {
     type: "type",
