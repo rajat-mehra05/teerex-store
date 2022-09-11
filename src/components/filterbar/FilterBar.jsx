@@ -104,7 +104,6 @@ const FilterBar = () => {
                     }
                   }}
                   checked={filterByPrice.some((range) => {
-                    console.log({ range, priceChoice });
                     return (
                       priceChoice[0] === range[0] && priceChoice[1] === range[1]
                     );
