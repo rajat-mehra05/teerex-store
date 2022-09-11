@@ -27,12 +27,19 @@ const FilterBar = () => {
                 <input
                   type="checkbox"
                   key={index}
-                  onChange={() =>
-                    productDispatch({
-                      type: "FILTER_BY_COLOR",
-                      payload: colorChoice,
-                    })
-                  }
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      productDispatch({
+                        type: "FILTER_BY_COLOR",
+                        payload: { color: colorChoice, checked: true },
+                      });
+                    } else {
+                      productDispatch({
+                        type: "FILTER_BY_COLOR",
+                        payload: { color: colorChoice, checked: false },
+                      });
+                    }
+                  }}
                   checked={filterByColor.includes(colorChoice) ? true : false}
                 />
                 {colorChoice}
@@ -51,12 +58,19 @@ const FilterBar = () => {
                 <input
                   type="checkbox"
                   key={index}
-                  onChange={() =>
-                    productDispatch({
-                      type: "FILTER_BY_GENDER",
-                      payload: genderChoice,
-                    })
-                  }
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      productDispatch({
+                        type: "FILTER_BY_GENDER",
+                        payload: { gender: genderChoice, checked: true },
+                      });
+                    } else {
+                      productDispatch({
+                        type: "FILTER_BY_GENDER",
+                        payload: { gender: genderChoice, checked: false },
+                      });
+                    }
+                  }}
                   checked={filterByGender.includes(genderChoice) ? true : false}
                 />
                 {genderChoice}
@@ -76,15 +90,27 @@ const FilterBar = () => {
                 <input
                   type="checkbox"
                   key={index}
-                  onChange={() =>
-                    productDispatch({
-                      type: "FILTER_BY_PRICE",
-                      payload: priceChoice,
-                    })
-                  }
-                  checked={filterByPrice.includes(priceChoice) ? true : false}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      productDispatch({
+                        type: "FILTER_BY_PRICE",
+                        payload: { range: priceChoice, checked: true },
+                      });
+                    } else {
+                      productDispatch({
+                        type: "FILTER_BY_PRICE",
+                        payload: { range: priceChoice, checked: false },
+                      });
+                    }
+                  }}
+                  checked={filterByPrice.some((range) => {
+                    console.log({ range, priceChoice });
+                    return (
+                      priceChoice[0] === range[0] && priceChoice[1] === range[1]
+                    );
+                  })}
                 />
-                {priceChoice}
+                ₹ {priceChoice.join("-")}
               </div>
             );
           })}
@@ -101,12 +127,19 @@ const FilterBar = () => {
                 <input
                   type="checkbox"
                   key={index}
-                  onChange={() =>
-                    productDispatch({
-                      type: "FILTER_BY_TYPE",
-                      payload: typeChoice,
-                    })
-                  }
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      productDispatch({
+                        type: "FILTER_BY_TYPE",
+                        payload: { type: typeChoice, checked: true },
+                      });
+                    } else {
+                      productDispatch({
+                        type: "FILTER_BY_TYPE",
+                        payload: { type: typeChoice, checked: false },
+                      });
+                    }
+                  }}
                   checked={filterByType.includes(typeChoice) ? true : false}
                 />
                 {typeChoice}

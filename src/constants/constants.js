@@ -4,6 +4,10 @@ export const API_URL =
 export const filterLabels = {
   color: ["Red", "Blue", "Black", "Pink", "Green"],
   gender: ["Men", "Women"],
-  price: ["0-₹250", "₹251-450", "₹500"],
+  price: [
+    [0, 250],
+    [251, 450],
+    [451, 500],
+  ],
   type: ["Polo", "Hoodie", "Basic"],
 };

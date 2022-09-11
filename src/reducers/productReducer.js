@@ -3,22 +3,42 @@ export const productReducer = (state, action) => {
 
   switch (type) {
     case "FILTER_BY_COLOR":
+      const { color, checked } = action.payload;
       return {
         ...state,
-        filterByColor: [...state.filterByColor, action.payload],
+        filterByColor: checked
+          ? [...state.filterByColor, color]
+          : state.filterByColor.filter((item) => item !== color),
       };
     case "FILTER_BY_GENDER":
+      const { gender, checked: genderChecked } = action.payload;
       return {
         ...state,
-        filterByGender: [...state.filterByGender, action.payload],
+        filterByGender: genderChecked
+          ? [...state.filterByGender, gender]
+          : state.filterByGender.filter((item) => item !== gender),
       };
+
     case "FILTER_BY_PRICE":
-      return { ...state, filterByPrice: action.payload };
-    case "FILTER_BY_TYPE":
+      const { range, checked: priceChecked } = action.payload;
       return {
         ...state,
-        filterByType: [...state.filterByType, action.payload],
+        filterByPrice: priceChecked
+          ? [...state.filterByPrice, range]
+          : state.filterByPrice.filter(
+              (item) => item[0] !== range[0] && item[1] !== range[1]
+            ),
       };
+
+    case "FILTER_BY_TYPE":
+      const { type, checked: typeChecked } = action.payload;
+      return {
+        ...state,
+        filterByType: typeChecked
+          ? [...state.filterByType, type]
+          : state.filterByType.filter((item) => item !== type),
+      };
+
     case "CLEAR_ALL_FILTERS":
       return {
         filterByColor: [],

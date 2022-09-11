@@ -30,7 +30,14 @@ const ProductsList = () => {
 
     if (filterByPrice.length) {
       filteredItems = filteredItems.filter((item) =>
-        filterByPrice.includes(item.price)
+        filterByPrice.some((range) => {
+          // [0,250] = range example
+          if (item.price >= range[0] && item.price <= range[1]) {
+            return true;
+          } else {
+            return false;
+          }
+        })
       );
     }
 
@@ -39,7 +46,6 @@ const ProductsList = () => {
         filterByType.includes(item.type)
       );
     }
-
     return filteredItems;
   };
 

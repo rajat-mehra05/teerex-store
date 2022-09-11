@@ -39,7 +39,7 @@ const ProductCard = ({ item }) => {
               })
             }
             disabled={!item.quantity}
-            className="rounded-lg p-2 bg-black hover:bg-slate-700 text-white"
+            className="rounded-lg py-2 px-3 bg-black hover:bg-slate-700 text-white"
           >
             Add to cart
           </button>

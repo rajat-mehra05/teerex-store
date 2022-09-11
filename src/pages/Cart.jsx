@@ -26,7 +26,7 @@ const Cart = () => {
         <div className="flex flex-col justify-center items-center py-20 gap-4">
           <h1 className="">You don't have any items in your cart yet</h1>
           <button
-            className="bg-black hover:bg-gray-400 p-2 rounded text-white"
+            className="bg-black hover:bg-gray-400 py-2 px-4 rounded text-white"
             onClick={() => navigate("/")}
           >
             Go back
