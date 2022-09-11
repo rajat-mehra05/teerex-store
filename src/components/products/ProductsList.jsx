@@ -5,6 +5,7 @@ import ProductCard from "./productCard/ProductCard";
 const ProductsList = () => {
   const {
     state: { products },
+    productDispatch,
     productState: {
       filterByColor,
       filterByGender,
@@ -58,10 +59,28 @@ const ProductsList = () => {
   };
 
   return (
-    <div className="flex flex-1 flex-wrap gap-16 justify-center">
-      {filterProducts().map((item) => (
-        <ProductCard item={item} key={item.id} />
-      ))}
+    <div className="flex flex-wrap gap-16 justify-center">
+      {filterProducts().length !== 0 ? (
+        filterProducts().map((item) => (
+          <ProductCard item={item} key={item.id} />
+        ))
+      ) : (
+        <div className="flex flex-col space-y-4">
+          <h1 className="font-semibold">
+            Hey! We don't have items for your matching filters.
+          </h1>
+          <button
+            onClick={() =>
+              productDispatch({
+                type: "CLEAR_ALL_FILTERS",
+              })
+            }
+            className="bg-black text-white p-2 rounded"
+          >
+            Explore Products
+          </button>
+        </div>
+      )}
     </div>
   );
 };

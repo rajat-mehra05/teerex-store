@@ -6,7 +6,6 @@ const MobileFilterBar = () => {
   const [showFilters, setShowFilters] = useState(false);
 
   function handleFilterToggle() {
-    console.log("clicked");
     setShowFilters((prevToggle) => !prevToggle);
   }
 
