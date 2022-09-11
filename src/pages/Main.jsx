@@ -12,7 +12,9 @@ const Main = () => {
         <MobileFilterBar />
       </div>
       <div className="flex items-start gap-8">
-        <FilterBar />
+        <div className="sm:block hidden">
+          <FilterBar />
+        </div>
         <ProductsList />
       </div>
     </div>

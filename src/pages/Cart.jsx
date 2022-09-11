@@ -38,7 +38,7 @@ const Cart = () => {
             {cart.map((item, index) => (
               <li key={item.type + index}>
                 <div className="shadow-xl p-4 sm:flex sm:justify-between sm:gap-0 gap-4">
-                  <div className="flex justify-center sm:flex-none py-4 sm:py-0">
+                  <div className="sm:flex flex-col py-4 sm:py-0">
                     <img
                       src={item.imageURL}
                       alt={item.name}
@@ -46,6 +46,9 @@ const Cart = () => {
                       height={150}
                     />
                   </div>
+                  <h1 className="font-semibold flex self-center">
+                    {item.name}
+                  </h1>
                   <div className="flex justify-between items-center sm:gap-80">
                     <select
                       className="py-2 px-4 bg-black cursor-pointer text-white"

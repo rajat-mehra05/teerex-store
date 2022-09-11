@@ -31,7 +31,7 @@ const Context = ({ children }) => {
     filterByGender: [],
     filterByPrice: [],
     filterByType: [],
-    searchQuery: "",
+    filterBySearchQuery: "",
   });
 
   return (

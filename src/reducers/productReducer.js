@@ -50,7 +50,7 @@ export const productReducer = (state, action) => {
     case "SEARCH_FILTER":
       return {
         ...state,
-        searchQuery: action.payload,
+        filterBySearchQuery: action.payload,
       };
     default:
       return state;

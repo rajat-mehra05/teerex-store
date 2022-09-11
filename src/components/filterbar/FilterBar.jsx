@@ -14,7 +14,7 @@ const FilterBar = () => {
   } = CartState();
 
   return (
-    <div className="hidden sm:block flex-col bg-white border-2 border-gray-100 shadow-2xl px-8 w-52 p-4 mx-12">
+    <div className="flex flex-col bg-white border-2 border-gray-100 shadow-2xl px-8 w-52 p-4 mx-12">
       <div className="flex flex-col space-y-4">
         {/* by color */}
         <div className="color">

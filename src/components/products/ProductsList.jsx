@@ -10,6 +10,7 @@ const ProductsList = () => {
       filterByGender,
       filterByPrice,
       filterByType,
+      filterBySearchQuery,
     },
   } = CartState();
 
@@ -46,6 +47,13 @@ const ProductsList = () => {
         filterByType.includes(item.type)
       );
     }
+
+    if (filterBySearchQuery) {
+      filteredItems = filteredItems.filter((item) =>
+        item.name.toLowerCase().includes(filterBySearchQuery.toLowerCase())
+      );
+    }
+
     return filteredItems;
   };
 
