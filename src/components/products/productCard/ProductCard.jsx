@@ -8,7 +8,7 @@ const ProductCard = ({ item }) => {
   } = CartState();
 
   return (
-    <div className="p-2 shadow-xl">
+    <div className="p-2 shadow-xl flex flex-col space-y-2">
       <div className="border-b-[2px] border-gray-200">
         <img src={item.imageURL} alt={item.name} width={200} height={200} />
       </div>

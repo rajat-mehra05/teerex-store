@@ -11,8 +11,6 @@ const Cart = () => {
     dispatch,
   } = CartState();
 
-  //   console.log(cart);
-
   useEffect(() => {
     setTotal(
       cart.reduce((acc, curr) => acc + Number(curr.price) * curr.qty, 0)
@@ -50,25 +48,33 @@ const Cart = () => {
                     {item.name}
                   </h1>
                   <div className="flex justify-between items-center sm:gap-80">
-                    <select
-                      className="py-2 px-4 bg-black cursor-pointer text-white"
-                      id="qty"
-                      name="qty"
-                      form="qtyForm"
-                      onChange={(e) =>
-                        dispatch({
-                          type: "CHANGE_CART_QUANTITY",
-                          payload: {
-                            id: item.id,
-                            qty: e.target.value,
-                          },
-                        })
-                      }
-                    >
-                      {[...Array(cart.quantity).keys()].map((item) => (
-                        <option key={item + 1}> Qty {item + 1} </option>
-                      ))}
-                    </select>
+                    <span>
+                      Quantity
+                      <select
+                        className="py-2 px-4 ml-2 bg-black cursor-pointer text-white"
+                        id="qty"
+                        name="qty"
+                        form="qtyForm"
+                        onChange={(e) =>
+                          dispatch({
+                            type: "CHANGE_CART_QUANTITY",
+                            payload: {
+                              id: item.id,
+                              qty: e.target.value,
+                            },
+                          })
+                        }
+                      >
+                        {[...Array(item.quantity).keys()].map((x) => {
+                          return (
+                            <option key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </span>
+
                     <button
                       onClick={() =>
                         dispatch({
@@ -94,5 +100,4 @@ const Cart = () => {
     </div>
   );
 };
-
 export default Cart;
