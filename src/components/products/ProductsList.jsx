@@ -65,7 +65,7 @@ const ProductsList = () => {
           <ProductCard item={item} key={item.id} />
         ))
       ) : (
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-4 sm:px-0 px-4">
           <h1 className="font-semibold">
             Hey! We don't have items for your matching filters.
           </h1>

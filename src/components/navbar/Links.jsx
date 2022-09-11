@@ -9,14 +9,14 @@ const Links = () => {
   } = CartState();
 
   return (
-    <div>
-      <ul className="flex sm:gap-8 gap-4 text-xl text-white items-center">
+    <div className="pr-2">
+      <ul className="flex sm:gap-8 gap-2 text-xl text-white items-center">
         <li>
           <NavLink to="/"> Products </NavLink>
         </li>
         <li>
           <NavLink to="/cart">
-            <p className="flex text-sm justify-center items-center absolute top-[10px] right-[25px] w-8 h-8 bg-white text-black rounded-full">
+            <p className="flex text-sm justify-center items-center absolute right-[8px] top-[22px] sm:top-[20px] sm:right-[38px] w-6 h-6 bg-white text-black rounded-full">
               {cart.length || 0}
             </p>
             <AiOutlineShoppingCart />
